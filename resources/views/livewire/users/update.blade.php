@@ -63,13 +63,13 @@ layout('layouts.app');
       <div class="max-w-xl">
         <section>
           <header>
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-              <span class="flexed items-center text-gray-500 leading-none pr-3">
-                <i class="la la-gear"></i>
+            <h2 class="flex items-center text-lg font-medium text-gray-900 dark:text-gray-100">
+              <span class="flex items-center text-gray-700 leading-none pr-3">
+                <i class="fas fa-cog"></i>
               </span>
-              <h3 class="flex items-center text-gray-700 leading-snug text-lg font-medium">
+              <span class="flex items-center text-gray-700 leading-snug text-lg font-medium">
                 {{$user->name}}
-              </h3>
+              </span>
             </h2>
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
               Update your account's profile information and email address.

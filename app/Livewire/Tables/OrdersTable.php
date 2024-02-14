@@ -64,20 +64,20 @@ class OrdersTable extends Component
                 ->visible(true),
 
             Column::add('status', __('Status'))
-                ->callback(function (Model $order) {
-                    return OrderStatus::from($order->status)->name();
+                ->callback(function (Model $model) {
+                    return OrderStatus::from($model->status)->name();
                 })
                 ->sortable()
                 ->exportable(),
 
             Column::add('total', __('Total'))
-                ->callback(fn (Model $order) => $numberFormat->formatCurrency($order->total, 'USD'))
+                ->callback(fn (Model $model) => $numberFormat->formatCurrency($model->total, 'USD'))
                 ->searchable()
                 ->sortable()
                 ->exportable(),
 
             Column::add('invoiced', __('Invoiced'))
-                ->callback(fn (Model $order) => $order->invoiced ? 'Yes' : 'No')
+                ->callback(fn (Model $model) => $model->invoiced ? 'Yes' : 'No')
                 ->sortable()
                 ->exportable(),
 
@@ -90,12 +90,12 @@ class OrdersTable extends Component
                 ->exportable(),
 
             Column::add('created_at', __('Created At'))
-                ->callback(fn (Model $order) => Carbon::parse($order->created_at)->format('Y-m-d H:i'))
+                ->callback(fn (Model $model) => Carbon::parse($model->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable(),
 
             Column::add('updated_at', __('Updated At'))
-                ->callback(fn (Model $order) => Carbon::parse($order->updated_at)->format('d/m/Y'))
+                ->callback(fn (Model $model) => Carbon::parse($model->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable(),
         ];
@@ -162,9 +162,9 @@ class OrdersTable extends Component
     {
         $status = OrderStatus::fromName($optionName);
 
-        foreach ($selectedItems as $_index => $orderId) {
-            event(new OrderStatusEvent($status->value, $orderId));
-            Order::where('id', $orderId)->update(['status' => $status->value]);
+        foreach ($selectedItems as $_index => $modelId) {
+            // event(new OrderStatusEvent($status->value, $modelId));
+            // Order::where('id', $modelId)->update(['status' => $status->value]);
         }
     }
 }
