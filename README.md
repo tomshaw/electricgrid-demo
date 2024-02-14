@@ -1,6 +1,6 @@
 ## Electric Grid Demo
 
-This repository serves as a demonstration of ElectricGrid showcasing its capabilities and how it can be used to generate datatables.
+This repository serves as a demo of ElectricGrid showcasing how it can be used to generate datatables.
 
 ## Setup Instructions
 
