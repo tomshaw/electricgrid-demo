@@ -1,6 +1,6 @@
 ## Electric Grid Demo
 
-Sure, here are some simple instructions for setting up a Laravel project:
+This repository serves as a demonstration of ElectricGrid showcasing its capabilities and how it can be used to generate datatables.
 
 ## Setup Instructions
 
