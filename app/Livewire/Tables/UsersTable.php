@@ -5,6 +5,7 @@ namespace App\Livewire\Tables;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use TomShaw\ElectricGrid\Action;
 use TomShaw\ElectricGrid\Column;
 use TomShaw\ElectricGrid\Component;
@@ -26,7 +27,7 @@ class UsersTable extends Component
 
     public function builder(): Builder
     {
-        return User::with('roles');
+        return User::with(['roles', 'profile']);
     }
 
     protected function setup(): void
@@ -43,13 +44,16 @@ class UsersTable extends Component
                 ->exportable(),
 
             Column::add('name', 'Customer')
+                ->callback(function (Model $model) {
+                    return $model->name . '<br>' . ($model->profile ? $model->profile->billing_address_line_1 : null);
+                })
                 ->searchable()
                 ->sortable()
                 ->exportable(),
 
             Column::add('roles.id', 'Roles')
-                ->callback(function (User $user) {
-                    return $user->roles->pluck('name')->map(function ($name) {
+                ->callback(function (Model $model) {
+                    return $model->roles->pluck('name')->map(function ($name) {
                         return ucfirst($name);
                     })->implode(', ');
                 })
@@ -57,12 +61,12 @@ class UsersTable extends Component
                 ->exportable(),
 
             Column::add('created_at', 'Created At')
-                ->callback(fn (User $user) => Carbon::parse($user->created_at)->format('F j, Y, g:i a'))
+                ->callback(fn (Model $model) => Carbon::parse($model->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable(),
 
             Column::add('updated_at', 'Updated At')
-                ->callback(fn (User $user) => Carbon::parse($user->updated_at)->format('F j, Y, g:i a'))
+                ->callback(fn (Model $model) => Carbon::parse($model->updated_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable()
                 ->visible(false),
