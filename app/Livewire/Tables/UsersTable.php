@@ -18,6 +18,8 @@ class UsersTable extends Component
 
     public bool $showPerPage = true;
 
+    public bool $showToggleColumns = true;
+
     public array $searchTermColumns = ['name'];
 
     public array $letterSearchColumns = ['name'];

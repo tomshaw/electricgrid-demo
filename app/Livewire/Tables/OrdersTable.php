@@ -24,6 +24,8 @@ class OrdersTable extends Component
 
     public bool $showPerPage = true;
 
+    public bool $showToggleColumns = true;
+
     public array $searchTermColumns = ['name'];
 
     public array $letterSearchColumns = ['name'];
@@ -93,11 +95,6 @@ class OrdersTable extends Component
                 ->callback(fn (Model $model) => Carbon::parse($model->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable(),
-
-            Column::add('updated_at', __('Updated At'))
-                ->callback(fn (Model $model) => Carbon::parse($model->created_at)->format('F j, Y, g:i a'))
-                ->sortable()
-                ->exportable(),
         ];
     }
 
@@ -112,7 +109,6 @@ class OrdersTable extends Component
             Filter::timepicker('order_time'),
             Filter::datepicker('order_date'),
             Filter::datetimepicker('created_at')->addDataAttribute('date-format', 'H:i'),
-            Filter::datetimepicker('updated_at')->addDataAttribute('date-format', 'H:i'),
         ];
     }
 
