@@ -18,8 +18,10 @@ class OrderProductTableSeeder extends Seeder
             $numProducts = rand(1, 5);
             for ($i = 0; $i < $numProducts; $i++) {
                 $product = $products->random();
-                OrderProduct::factory()->for($order, 'order')->for($product, 'product')->create();
+                $orderProduct = OrderProduct::factory()->for($order, 'order')->for($product, 'product')->create();
+                $order->total += $orderProduct->quantity * $product->price;
             }
+            $order->save();
         }
     }
 }
