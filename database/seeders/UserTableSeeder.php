@@ -20,10 +20,10 @@ class UserTableSeeder extends Seeder
         ]);
         
         $user->assignRole('Admin');
-        
+
         Profile::factory()->for($user)->create();
     
-        User::factory()->count(200)->has(Profile::factory()->count(1))->create()->each(function ($user) {
+        User::factory()->count(199)->has(Profile::factory()->count(1))->create()->each(function ($user) {
             $user->assignRole('Member');
         });
     }
