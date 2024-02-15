@@ -45,7 +45,15 @@ class UsersTable extends Component
 
             Column::add('name', 'Customer')
                 ->callback(function (Model $model) {
-                    return $model->name . '<br>' . ($model->profile ? $model->profile->billing_address_line_1 : null);
+                    return $model->name . '<br>' . $model->email;
+                })
+                ->searchable()
+                ->sortable()
+                ->exportable(),
+
+            Column::add('profile.billing_address_line_1', 'Address')
+                ->callback(function (Model $model) {
+                    return ($model->profile ? $model->profile->billing_address_line_1 : null);
                 })
                 ->searchable()
                 ->sortable()
@@ -78,6 +86,7 @@ class UsersTable extends Component
         return [
             Filter::number('id'),
             Filter::text('name'),
+            Filter::text('profile.billing_address_line_1'),
             Filter::multiselect('roles.id')->options([1 => 'Admin', 2 => 'Member']),
             Filter::datepicker('created_at'),
         ];
