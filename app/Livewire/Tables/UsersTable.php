@@ -10,6 +10,7 @@ use TomShaw\ElectricGrid\Action;
 use TomShaw\ElectricGrid\Column;
 use TomShaw\ElectricGrid\Component;
 use TomShaw\ElectricGrid\Filters\Filter;
+use Spatie\Permission\Models\Role;
 
 class UsersTable extends Component
 {
@@ -87,7 +88,7 @@ class UsersTable extends Component
             Filter::number('id'),
             Filter::text('name'),
             Filter::text('profile.billing_address_line_1'),
-            Filter::multiselect('roles.id')->options([1 => 'Admin', 2 => 'Member']),
+            Filter::multiselect('roles.id')->options($this->roles),
             Filter::datepicker('created_at'),
         ];
     }
@@ -104,5 +105,10 @@ class UsersTable extends Component
                 ];
             }),
         ];
+    }
+
+    public function getRolesProperty()
+    {
+        return Role::pluck('name', 'id')->toArray();
     }
 }
