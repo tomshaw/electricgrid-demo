@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use DateTime;
+use DateInterval;
 
 class OrderFactory extends Factory
 {
@@ -16,9 +17,10 @@ class OrderFactory extends Factory
     public function definition()
     {
         if (!isset(self::$orderDate)) {
-            self::$orderDate = (new DateTime())->modify('-1 years');
+            self::$orderDate = (new DateTime())->modify('-2 years');
         } else {
-            self::$orderDate->modify('+5 hours');
+            // Correctly handle Daylight Saving Time changes
+            self::$orderDate->add(new DateInterval('P1D'));
         }
     
         return [

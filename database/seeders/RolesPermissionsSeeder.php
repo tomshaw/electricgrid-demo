@@ -15,8 +15,14 @@ class RolesPermissionsSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create roles
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'member']);
+        Role::create(['name' => 'Admin']);
+        Role::create(['name' => 'Member']);
+        Role::create(['name' => 'Editor']);
+        Role::create(['name' => 'Moderator']);
+        Role::create(['name' => 'Manager']);
+        Role::create(['name' => 'Guest']);
+        Role::create(['name' => 'Subscriber']);
+        Role::create(['name' => 'Contributor']);
 
         // create roles with guards
         // Role::create(['guard_name' => 'admin', 'name' => 'Admin']);
@@ -24,10 +30,10 @@ class RolesPermissionsSeeder extends Seeder
 
         // create permissions
         Permission::create(['name' => 'admin']);
-        Permission::create(['name' => 'report']);
+        Permission::create(['name' => 'dashboard']);
 
         // assign created permissions
-        $role = Role::where('name', 'admin')->first();
+        $role = Role::where('name', 'Admin')->first();
         $role->givePermissionTo(Permission::all());
 
         // this can be done as separate statements

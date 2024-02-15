@@ -13,7 +13,6 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
             'billing_address_line_1' => $this->faker->streetAddress,
             'billing_address_line_2' => $this->faker->secondaryAddress,
             'billing_city' => $this->faker->city,
