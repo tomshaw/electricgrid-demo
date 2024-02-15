@@ -10,10 +10,10 @@ class OrderTableSeeder extends Seeder
 {
     public function run()
     {
-        $users = User::all();
+        $users = User::all()->shuffle();
 
         foreach ($users as $user) {
-            Order::factory()->for($user, 'user')->count(2)->create();
+            Order::factory()->for($user, 'user')->create();
         }
     }
 }
