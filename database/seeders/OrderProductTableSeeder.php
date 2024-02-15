@@ -13,10 +13,13 @@ class OrderProductTableSeeder extends Seeder
     {
         $orders = Order::all();
         $products = Product::all();
-
+        
         foreach ($orders as $order) {
-            $product = $products->random();
-            OrderProduct::factory()->for($order, 'order')->for($product, 'product')->create();
+            $numProducts = rand(1, 5);
+            for ($i = 0; $i < $numProducts; $i++) {
+                $product = $products->random();
+                OrderProduct::factory()->for($order, 'order')->for($product, 'product')->create();
+            }
         }
     }
 }

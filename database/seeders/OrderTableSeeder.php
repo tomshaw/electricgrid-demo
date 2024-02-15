@@ -4,11 +4,16 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Order;
+use App\Models\User;
 
 class OrderTableSeeder extends Seeder
 {
     public function run()
     {
-        Order::factory()->count(400)->create();
+        $users = User::all();
+
+        foreach ($users as $user) {
+            Order::factory()->for($user, 'user')->count(2)->create();
+        }
     }
 }

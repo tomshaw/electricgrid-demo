@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Order;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use DateTime;
 use DateInterval;
@@ -24,7 +23,6 @@ class OrderFactory extends Factory
         }
     
         return [
-            'user_id' => User::factory(),
             'order_date' => self::$orderDate->format('Y-m-d'),
             'order_time' => $this->faker->time('H:i:s'),
             'status' => $this->faker->numberBetween(0, 4),
