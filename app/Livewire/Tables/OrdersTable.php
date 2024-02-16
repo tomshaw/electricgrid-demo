@@ -148,9 +148,26 @@ class OrdersTable extends Component
                     Action::make('csv', 'Export CSV')->export('SalesOrders.csv'),
                     Action::make('pdf', 'Export PDF')->export('SalesOrders.pdf'),
                     Action::make('html', 'Export HTML')->export('SalesOrders.html'),
-                    Action::make('xlsx', 'Export XLSX')->export('SalesOrders.xlsx'),
+                    Action::make('xlsx', 'Export XLSX')->export('SalesOrders.xlsx')->styles($this->exportStyles)->columnWidths($this->exportWidths),
                 ];
             }),
+        ];
+    }
+
+    public function getExportStylesProperty()
+    {
+        return [
+            '1'  => ['font' => ['bold' => true]],
+            'B2' => ['font' => ['italic' => true]],
+            'C'  => ['font' => ['size' => 16]],
+        ];
+    }
+
+    public function getExportWidthsProperty()
+    {
+        return [
+            'A' => 20,
+            'B' => 30,
         ];
     }
 
