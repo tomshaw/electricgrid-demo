@@ -18,4 +18,4 @@ After running the migrations, you can use the provided factories and seeders to 
 php artisan db:seed
 ```
 
-This will seed the database with a rich set of data, giving you a ready-to-use environment for exploring the features of Electric Grid.
+This will seed the database with a rich set of data, giving you a ready-to-use environment for testing.
