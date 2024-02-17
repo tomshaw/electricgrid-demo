@@ -72,7 +72,7 @@ layout('layouts.app');
               </span>
             </h2>
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-              Update your account's profile information and email address.
+              Update customer profile and account information.
             </p>
           </header>
 
