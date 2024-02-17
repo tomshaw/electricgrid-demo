@@ -56,14 +56,15 @@ class OrdersTable extends Component
             Column::add('id', __('ID'))
                 ->sortable()
                 ->stylable('text-center w-20')
-                ->exportable()
-                ->visible(true),
+                ->exportable(),
 
             Column::add('name', __('Customer'))
+                ->callback(function (Model $model) {
+                    return view('livewire.tables.orders-customer', ['model' => $model]);
+                })
                 ->searchable()
                 ->sortable(true)
-                ->exportable()
-                ->visible(true),
+                ->exportable(),
 
             Column::add('status', __('Status'))
                 ->callback(function (Model $model) {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -44,11 +45,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function getGravatarAttribute()
+    protected function gravatar(): Attribute
     {
-        $hash = md5(strtolower(trim($this->attributes['email'])));
-
-        return "//www.gravatar.com/avatar/$hash";
+        return Attribute::make(
+            get: function () {
+                $hash = md5(strtolower(trim($this->email)));
+                return "//www.gravatar.com/avatar/$hash";
+            }
+        );
     }
 
     public function profile()

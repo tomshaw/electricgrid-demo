@@ -24,7 +24,7 @@ class UsersTable extends Component
 
     public array $searchTermColumns = ['name'];
 
-    public array $letterSearchColumns = ['name'];
+    public array $letterSearchColumns = ['profile.billing_address_line_1'];
 
     public function builder(): Builder
     {
@@ -46,7 +46,7 @@ class UsersTable extends Component
 
             Column::add('name', 'Customer')
                 ->callback(function (Model $model) {
-                    return $model->name . '<br>' . $model->email;
+                    return view('livewire.tables.users-customer', ['model' => $model]);
                 })
                 ->searchable()
                 ->sortable()
