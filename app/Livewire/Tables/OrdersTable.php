@@ -59,9 +59,6 @@ class OrdersTable extends Component
                 ->exportable(),
 
             Column::add('name', __('Customer'))
-                ->callback(function (Model $model) {
-                    return view('livewire.tables.orders-customer', ['model' => $model]);
-                })
                 ->searchable()
                 ->sortable(true)
                 ->exportable(),

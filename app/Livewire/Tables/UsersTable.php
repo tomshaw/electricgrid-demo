@@ -50,7 +50,7 @@ class UsersTable extends Component
                 })
                 ->searchable()
                 ->sortable()
-                ->exportable(),
+                ->exportable(false),
 
             Column::add('profile.billing_address_line_1', 'Address')
                 ->callback(function (Model $model) {
