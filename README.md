@@ -1,76 +1,21 @@
-## Electric Grid Demo
+## Electric Grid Demonstration Application
 
-This repository serves as a demo of ElectricGrid showcasing how it can be used to generate datatables.
+This repository serves as a demonstration of [ElectricGrid](https://github.com/tomshaw/electricgrid) showcasing how it can be used to generate datatables.
 
-## Setup Instructions
+### Setup Instructions
 
-1. **Clone the repository**
+This repository comes with a comprehensive set of database migrations, factories, and seeders that set up a demo online store. This includes a variety of data such as products, customers, orders, and more, providing a realistic and robust dataset for testing and development purposes.
 
-   First, clone the repository to your local machine:
+To set up the demo database, you first need to run the migrations which create the necessary tables in your database. This can be done with the following command:
 
-   ```bash
-   git clone https://github.com/tomshaw/electricgrid-demo.git
-   ```
+```bash
+php artisan migrate
+```
 
-2. **Install Dependencies**
+After running the migrations, you can use the provided factories and seeders to populate the database with demo data. This can be done with the following command:
 
-   Navigate into the directory of the project which you just cloned, and install PHP and JavaScript dependencies:
+```bash
+php artisan db:seed
+```
 
-   ```bash
-   cd electricgrid-demo
-   composer install
-   npm install
-   ```
-
-3. **Environment File**
-
-   Make a copy of `.env.example` file and rename it to `.env`:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-   Update the `.env` file with your database information.
-
-4. **Generate Application Key**
-
-   Generate a key for your application:
-
-   ```bash
-   php artisan key:generate
-   ```
-
-5. **Run Migrations**
-
-   Run the database migrations:
-
-   ```bash
-   php artisan migrate
-   ```
-
-6. **Seed the Database**
-
-   Seed the database with some data:
-
-   ```bash
-   php artisan db:seed
-   ```
-
-7. **Compile Assets**
-
-   Compile the assets using Laravel Mix:
-
-   ```bash
-   npm run dev
-   ```
-
-8. **Start the Server**
-
-   Finally, start the Laravel server:
-
-   ```bash
-   php artisan serve
-   ```
-
-Your application should now be running and accessible at `http://localhost:8000`.
-
+This will seed the database with a rich set of data, giving you a ready-to-use environment for exploring the features of Electric Grid.
