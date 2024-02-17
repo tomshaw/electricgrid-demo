@@ -24,7 +24,7 @@ class UsersTable extends Component
 
     public array $searchTermColumns = ['name'];
 
-    public array $letterSearchColumns = ['profile.billing_address_line_1'];
+    public array $letterSearchColumns = ['name'];
 
     public function builder(): Builder
     {
