@@ -25,6 +25,9 @@ class Profile extends Model
         'shipping_country',
         'phone_number',
         'profile_picture',
+        // Testing
+        'profile_date',
+        'profile_time',
     ];
 
     public function user()

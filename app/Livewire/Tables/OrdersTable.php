@@ -173,7 +173,7 @@ class OrdersTable extends Component
     {
         $status = OrderStatus::fromName($optionName);
 
-        foreach ($selectedItems as $_index => $modelId) {
+        foreach ($selectedItems as $index => $modelId) {
             // event(new OrderStatusEvent($status->value, $modelId));
             // Order::where('id', $modelId)->update(['status' => $status->value]);
         }

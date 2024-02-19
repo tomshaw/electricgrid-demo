@@ -27,6 +27,10 @@ class ProfileFactory extends Factory
             'shipping_country' => $this->faker->country,
             'phone_number' => $this->faker->phoneNumber,
             'profile_picture' => $this->faker->imageUrl(200, 200, 'people'),
+            // Filter testing
+            'profile_badge' => $this->faker->numberBetween(1, 5),
+            'profile_date' => $this->faker->date('Y-m-d'),
+            'profile_time' => $this->faker->time('H:i:s'),
         ];
     }
 }

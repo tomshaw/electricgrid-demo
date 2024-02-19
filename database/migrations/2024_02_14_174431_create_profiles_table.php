@@ -28,6 +28,13 @@ return new class extends Migration
             $table->string('shipping_country');
             $table->string('phone_number')->nullable();
             $table->string('profile_picture')->nullable();
+
+            // Start Filter Testing
+            $table->integer('profile_badge')->default(0);
+            $table->date('profile_date');
+            $table->time('profile_time');
+            // End Filter Testing
+
             $table->timestamps();
         });
     }

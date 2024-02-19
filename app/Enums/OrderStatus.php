@@ -75,25 +75,6 @@ enum OrderStatus: int
         };
     }
 
-    /**
-     * Available Labels Have No Effect
-     *
-     * @see https://getbootstrap.com/docs/5.0/customize/color/
-     *
-     * fc-event-primary
-     * fc-event-info
-     * fc-event-success
-     * fc-event-warning
-     * fc-event-danger
-     *
-     * fc-event-solid-primary
-     * fc-event-solid-info
-     * fc-event-solid-success
-     * fc-event-solid-warning
-     * fc-event-solid-danger
-     *
-     * fc-event-light - Can be applied to each label.
-     */
     public function label(): string
     {
         return match ($this) {

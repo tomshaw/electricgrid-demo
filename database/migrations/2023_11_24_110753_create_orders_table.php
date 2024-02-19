@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->date('order_date'); // Stores dates in 'YYYY-MM-DD' format. 
-            $table->time('order_time'); //  Stores time in 'HH:MM:SS' format
+            $table->date('order_date'); 
+            $table->time('order_time');
             $table->smallInteger('status');
             $table->decimal('total', 8, 2);
             $table->boolean('invoiced')->default(false);

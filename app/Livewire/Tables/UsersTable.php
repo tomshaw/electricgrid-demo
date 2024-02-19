@@ -70,7 +70,7 @@ class UsersTable extends Component
                 ->exportable(),
 
             Column::add('created_at', 'Created At')
-                ->callback(fn (Model $model) => Carbon::parse($model->created_at)->format('F j, Y, g:i a'))
+                ->callback(fn (Model $model) => Carbon::parse($model->profile->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable(),
 
@@ -78,7 +78,7 @@ class UsersTable extends Component
                 ->callback(fn (Model $model) => Carbon::parse($model->updated_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable()
-                ->visible(false),
+                ->visible(),
         ];
     }
 
@@ -89,7 +89,8 @@ class UsersTable extends Component
             Filter::text('name'),
             Filter::text('profile.billing_address_line_1'),
             Filter::multiselect('roles.id')->options($this->roles),
-            Filter::datepicker('created_at'),
+            Filter::datetimepicker('created_at'),
+            Filter::datetimepicker('updated_at'),
         ];
     }
 
