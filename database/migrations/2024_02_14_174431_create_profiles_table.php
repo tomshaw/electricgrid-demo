@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('shipping_country');
             $table->string('phone_number')->nullable();
             $table->string('profile_picture')->nullable();
+            $table->boolean('newsletter')->default(false);
 
             // Start Filter Testing
             $table->integer('profile_badge')->default(0);

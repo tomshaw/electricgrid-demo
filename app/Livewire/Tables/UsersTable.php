@@ -22,7 +22,7 @@ class UsersTable extends Component
 
     public bool $showToggleColumns = true;
 
-    public array $searchTermColumns = ['name'];
+    public array $searchTermColumns = ['roles.name'];
 
     public array $letterSearchColumns = ['name'];
 
@@ -69,6 +69,14 @@ class UsersTable extends Component
                 ->sortable()
                 ->exportable(),
 
+            Column::add('profile.newsletter', 'Newsletter')
+                ->callback(function (Model $model) {
+                    return ($model->profile ? ($model->profile->newsletter ? 'Yes' : 'No') : null);
+                })
+                ->searchable()
+                ->sortable()
+                ->exportable(),
+
             Column::add('created_at', 'Created At')
                 ->callback(fn (Model $model) => Carbon::parse($model->profile->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
@@ -89,6 +97,7 @@ class UsersTable extends Component
             Filter::text('name'),
             Filter::text('profile.billing_address_line_1'),
             Filter::multiselect('roles.id')->options($this->roles),
+            Filter::boolean('profile.newsletter')->labels('Yes', 'No'),
             Filter::datetimepicker('created_at'),
             Filter::datetimepicker('updated_at'),
         ];
