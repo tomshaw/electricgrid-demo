@@ -77,6 +77,18 @@ class UsersTable extends Component
                 ->sortable()
                 ->exportable(),
 
+            Column::add('profile.profile_time', __('Profile Time'))
+                //->callback(fn (Model $model) => Carbon::parse($model->profile->profile_time)->format('g:i a'))
+                ->searchable()
+                ->sortable()
+                ->exportable(),
+
+            Column::add('profile.profile_date', __('Profile Date'))
+                //->callback(fn (Model $model) => Carbon::parse($model->profile->profile_date)->format('m-d-Y'))
+                ->searchable()
+                ->sortable()
+                ->exportable(),
+
             Column::add('created_at', 'Created At')
                 ->callback(fn (Model $model) => Carbon::parse($model->profile->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
@@ -86,7 +98,7 @@ class UsersTable extends Component
                 ->callback(fn (Model $model) => Carbon::parse($model->updated_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable()
-                ->visible(),
+                ->visible(false),
         ];
     }
 
@@ -98,8 +110,10 @@ class UsersTable extends Component
             Filter::text('profile.billing_address_line_1'),
             Filter::multiselect('roles.id')->options($this->roles),
             Filter::boolean('profile.newsletter')->labels('Yes', 'No'),
+            Filter::timepicker('profile.profile_time'),
+            Filter::datepicker('profile.profile_date'),
             Filter::datetimepicker('created_at'),
-            Filter::datetimepicker('updated_at'),
+            //Filter::datetimepicker('updated_at'),
         ];
     }
 

@@ -25,7 +25,8 @@ class Profile extends Model
         'shipping_country',
         'phone_number',
         'profile_picture',
-        // Testing
+        'newsletter',
+        'profile_badge',
         'profile_date',
         'profile_time',
     ];

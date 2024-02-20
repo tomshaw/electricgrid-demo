@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
             'name' => env('DB_SEED_NAME', 'Full Stack Developer'),
             'email' => env('DB_SEED_EMAIL', 'placeholder@email.com'),
             'email_verified_at' => now(),
-            'password' => bcrypt(env('DB_SEED_PASSWORD', '9vGt4#RfZ!7Q')),
+            'password' => bcrypt(env('DB_SEED_PASSWORD', Str::random(10))),
             'remember_token' => Str::random(10),
         ]);
         
