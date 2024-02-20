@@ -12,6 +12,18 @@ To set up the demo database, you first need to run the migrations which create t
 php artisan migrate
 ```
 
+## Configuration for Testing
+
+Before running the database seeder make sure to update your `.env` file with the following settings: These settings are added for convience only and meant to be used only once. 
+
+> Please refer to the `UserTableSeeder` to understand how these values are used.
+
+```env
+DB_SEED_NAME="Full Stack Developer"
+DB_SEED_EMAIL="placeholder@email.com"
+DB_SEED_PASSWORD="9vGt4#RfZ!7Q"
+```
+
 After running the migrations, you can use the provided factories and seeders to populate the database with demo data. This can be done with the following command:
 
 ```bash

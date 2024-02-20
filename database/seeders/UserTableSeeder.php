@@ -12,15 +12,15 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $user = User::factory()->create([
-            'name' => 'Tom Shaw',
-            'email' => 'dev@gmail.com',
+            'name' => env('DB_SEED_NAME', 'Full Stack Developer'),
+            'email' => env('DB_SEED_EMAIL', 'placeholder@email.com'),
             'email_verified_at' => now(),
-            'password' => bcrypt('password'),
+            'password' => bcrypt(env('DB_SEED_PASSWORD', '9vGt4#RfZ!7Q')),
             'remember_token' => Str::random(10),
         ]);
         
         $user->assignRole('Admin');
-
+    
         Profile::factory()->for($user)->create();
     
         User::factory()->count(199)->has(Profile::factory()->count(1))->create()->each(function ($user) {
