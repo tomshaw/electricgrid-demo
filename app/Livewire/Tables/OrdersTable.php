@@ -58,9 +58,9 @@ class OrdersTable extends Component
                 ->stylable('text-center w-20')
                 ->exportable(),
 
-            Column::add('name', __('Customer'))
+            Column::add('user.name', __('Customer'))
                 ->searchable()
-                ->sortable(true)
+                ->sortable()
                 ->exportable(),
 
             Column::add('status', __('Status'))
@@ -100,7 +100,7 @@ class OrdersTable extends Component
     {
         return [
             Filter::number('id')->placeholders('Min', 'Max'),
-            Filter::text('name')->placeholder('Customer'),
+            Filter::text('user.name')->placeholder('Customer'),
             Filter::select('status')->options(OrderStatus::toOptions()),
             Filter::number('total')->placeholders('Min Total', 'Max Total'),
             Filter::boolean('invoiced')->labels('Yes', 'No'),
