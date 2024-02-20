@@ -22,7 +22,7 @@ class UsersTable extends Component
 
     public bool $showToggleColumns = true;
 
-    public array $searchTermColumns = ['roles.name'];
+    public array $searchTermColumns = ['name'];
 
     public array $letterSearchColumns = ['name'];
 
