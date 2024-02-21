@@ -4,7 +4,7 @@ This repository serves as a demonstration of [Electric Grid](https://github.com/
 
 ### Setup Instructions
 
-Before running the database seeder make sure to update your `.env` file with the following settings. 
+Before running the seeder make sure to update your `.env` file with the following settings. 
 
 > Note: Refer to the `UserTableSeeder` to understand how these values are used.
 
