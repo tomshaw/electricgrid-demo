@@ -20,7 +20,7 @@ Next you can use the provided factories and seeders to populate the database.
 php artisan db:seed
 ```
 
-This will seed the database with a rich set of data, giving you a ready-to-use environment for testing.
+This will give you a ready-to-use environment for testing.
 
 ### Contributing
 
