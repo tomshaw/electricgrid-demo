@@ -14,7 +14,7 @@ DB_SEED_EMAIL="placeholder@email.com"
 DB_SEED_PASSWORD=""
 ```
 
-After running the migrations, you can use the provided factories and seeders to populate the database.
+Next you can use the provided factories and seeders to populate the database.
 
 ```bash
 php artisan db:seed
@@ -25,6 +25,8 @@ This will seed the database with a rich set of data, giving you a ready-to-use e
 ### Contributing
 
 Run the following command before running composer install if you wish to have a `local repository clone` to make pull requests.
+
+> Note: Refer to the bottom of the composer file to understand how this works.
 
 ```bash
 git clone git@github.com:tomshaw/electricgrid.git packages/electricgrid
