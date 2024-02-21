@@ -1,6 +1,6 @@
 ## Electric Grid Demonstration Application
 
-This repository serves as a demonstration of [Electric Grid](https://github.com/tomshaw/electricgrid) showcasing how it can be used to generate datatables. It comes with a comprehensive set of database migrations, factories, and seeders that set up a demo online store. This includes a variety of data such as products, customers, orders, and more, providing a realistic and robust dataset for testing and development purposes.
+This repository serves as a demonstration of [Electric Grid](https://github.com/tomshaw/electricgrid) showcasing how it can be used to generate datatables. It comes with a comprehensive set of database migrations, factories, and seeders that set up a demo online store.
 
 ### Setup Instructions
 
