@@ -126,7 +126,7 @@ class UsersTable extends Component
             Filter::timepicker('profile.profile_time'),
             Filter::datepicker('profile.profile_date'),
             Filter::datetimepicker('profile.created_at'),
-            //Filter::datetimepicker('updated_at'),
+            Filter::datetimepicker('updated_at'),
         ];
     }
 
