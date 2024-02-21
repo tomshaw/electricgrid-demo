@@ -76,7 +76,8 @@ class UsersTable extends Component
                     })->implode(', ');
                 })
                 ->sortable()
-                ->exportable(),
+                ->exportable()
+                ->visible(false),
 
             Column::add('profile.newsletter', 'Newsletter')
                 ->callback(function (Model $model) {
