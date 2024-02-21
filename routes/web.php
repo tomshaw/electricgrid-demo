@@ -14,7 +14,7 @@ use Livewire\Volt\Volt;
 |
 */
 
-Route::view('/', 'welcome');
+Volt::route('/', 'home.table')->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -25,11 +25,9 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Volt::route('users', 'users.table')->name('users');
-Volt::route('users/create', 'users.create')->name('users.create');
 Volt::route('users/update/{user}', 'users.update')->name('users.update');
 
 Volt::route('orders', 'orders.table')->name('orders');
-Volt::route('orders/create', 'orders.create')->name('orders.create');
 Volt::route('orders/update/{order}', 'orders.update')->name('orders.update');
 
 require __DIR__ . '/auth.php';

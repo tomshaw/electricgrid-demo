@@ -40,12 +40,12 @@ class UsersTable extends Component
         return [
             Column::add('id', 'ID')
                 ->sortable()
-                ->stylable('text-start w-4')
-                ->exportable(),
+                ->exportable()
+                ->style('w-3'),
 
             Column::add('name', 'Customer')
                 ->callback(function (Model $model) {
-                    return view('livewire.tables.users-customer', ['model' => $model]);
+                    return view('livewire.tables.customer', ['model' => $model]);
                 })
                 ->searchable()
                 ->sortable()
@@ -112,8 +112,8 @@ class UsersTable extends Component
                 ->visible(false),
 
             Column::add('', 'Actions')->callback(function (Model $model) {
-                return view('livewire.tables.users-actions', ['model' => $model]);
-            })->actionable()
+                return view('livewire.tables.actions.users', ['model' => $model]);
+            })->actionable()->align('justify-center'),
         ];
     }
 

@@ -57,7 +57,6 @@ class OrdersTable extends Component
         return [
             Column::add('id', __('ID'))
                 ->sortable()
-                ->stylable('text-center w-20')
                 ->exportable(),
 
             Column::add('user.name', __('Customer'))
@@ -95,6 +94,10 @@ class OrdersTable extends Component
                 ->callback(fn (Model $model) => Carbon::parse($model->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable(),
+
+            Column::add('', 'Actions')->callback(function (Model $model) {
+                return view('livewire.tables.actions.orders', ['model' => $model]);
+            })->actionable()->align('justify-center'),
         ];
     }
 

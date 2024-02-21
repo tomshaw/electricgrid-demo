@@ -7,7 +7,7 @@ use ValueError;
 enum OrderStatus: int
 {
     case STATUS_NEW = 0;
-    case STATUS_APPROVED = 1;  // create invoice and send
+    case STATUS_APPROVED = 1;
     case STATUS_COMPLETED = 2;
     case STATUS_CANCELLED = 3;
     case STATUS_REMINDED = 4;
@@ -27,16 +27,6 @@ enum OrderStatus: int
     public static function toArray($property = 'name'): array
     {
         return array_column(OrderStatus::cases(), $property);
-    }
-
-    public static function toSelect($optionString = ''): array
-    {
-        $options = [];
-        foreach (OrderStatus::cases() as $value) {
-            $options[$value->value] = ucwords(strtolower(str_replace('STATUS_', $optionString, $value->name)));
-        }
-
-        return $options;
     }
 
     public static function toOptions(): array
