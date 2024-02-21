@@ -4,14 +4,24 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Profile;
-use App\Models\User;
+use DateTime;
+use DateInterval;
 
 class ProfileFactory extends Factory
 {
     protected $model = Profile::class;
 
+    private static $profileDate;
+
     public function definition()
     {
+        if (!isset(self::$profileDate)) {
+            self::$profileDate = (new DateTime())->modify('-2 years');
+        } else {
+            // Correctly handle Daylight Saving Time changes
+            self::$profileDate->add(new DateInterval('P1D'));
+        }
+    
         return [
             'billing_address_line_1' => $this->faker->streetAddress,
             'billing_address_line_2' => $this->faker->secondaryAddress,
@@ -30,8 +40,10 @@ class ProfileFactory extends Factory
             'newsletter' => $this->faker->boolean,
             // Filter testing
             'profile_badge' => $this->faker->numberBetween(1, 5),
-            'profile_date' => $this->faker->date('Y-m-d'),
+            'profile_date' => self::$profileDate->format('Y-m-d'),
             'profile_time' => $this->faker->time('H:i:s'),
+            'created_at' => self::$profileDate,
+            'updated_at' => self::$profileDate,
         ];
     }
 }

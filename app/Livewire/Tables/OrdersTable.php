@@ -26,9 +26,9 @@ class OrdersTable extends Component
 
     public bool $showToggleColumns = true;
 
-    public array $searchTermColumns = ['name'];
+    public array $searchTermColumns = ['user.name'];
 
-    public array $letterSearchColumns = ['name'];
+    public array $letterSearchColumns = ['user.name'];
 
     protected function setup(): void
     {
@@ -42,9 +42,13 @@ class OrdersTable extends Component
 
         // return Order::with(['user' => function ($query) {
         //     $query->select('id', 'name', 'email');
-        // }])->select('orders.id', 'orders.user_id', 'orders.status', 'orders.total', 'orders.invoiced', 'orders.created_at', 'orders.updated_at');
+        // }]);
 
-        // return Order::select('orders.id', 'orders.status', 'orders.total', 'orders.invoiced', 'orders.created_at', 'orders.updated_at', 'users.name')
+        // return Order::with(['user' => function ($query) {
+        //     $query->select('id', 'name', 'email');
+        // }])->select('orders.id', 'orders.user_id', 'orders.status', 'orders.total', 'orders.invoiced', 'orders.order_time', 'orders.order_date', 'orders.created_at', 'orders.updated_at');
+
+        // return Order::select('orders.id', 'orders.status', 'orders.total', 'orders.invoiced', 'orders.order_time', 'orders.order_date', 'orders.created_at', 'orders.updated_at', 'users.name')
         //     ->join('users', 'orders.user_id', '=', 'users.id');
     }
 

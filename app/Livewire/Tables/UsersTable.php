@@ -69,6 +69,15 @@ class UsersTable extends Component
                 ->sortable()
                 ->exportable(),
 
+            Column::add('roles.name', 'Role Name')
+                ->callback(function (Model $model) {
+                    return $model->roles->pluck('name')->map(function ($name) {
+                        return ucfirst($name);
+                    })->implode(', ');
+                })
+                ->sortable()
+                ->exportable(),
+
             Column::add('profile.newsletter', 'Newsletter')
                 ->callback(function (Model $model) {
                     return ($model->profile ? ($model->profile->newsletter ? 'Yes' : 'No') : null);
@@ -78,18 +87,18 @@ class UsersTable extends Component
                 ->exportable(),
 
             Column::add('profile.profile_time', __('Profile Time'))
-                //->callback(fn (Model $model) => Carbon::parse($model->profile->profile_time)->format('g:i a'))
+                ->callback(fn (Model $model) => Carbon::parse($model->profile->profile_time)->format('g:i a'))
                 ->searchable()
                 ->sortable()
                 ->exportable(),
 
             Column::add('profile.profile_date', __('Profile Date'))
-                //->callback(fn (Model $model) => Carbon::parse($model->profile->profile_date)->format('m-d-Y'))
+                ->callback(fn (Model $model) => Carbon::parse($model->profile->profile_date)->format('m-d-Y'))
                 ->searchable()
                 ->sortable()
                 ->exportable(),
 
-            Column::add('created_at', 'Created At')
+            Column::add('profile.created_at', 'Created At')
                 ->callback(fn (Model $model) => Carbon::parse($model->profile->created_at)->format('F j, Y, g:i a'))
                 ->sortable()
                 ->exportable(),
@@ -109,10 +118,11 @@ class UsersTable extends Component
             Filter::text('name'),
             Filter::text('profile.billing_address_line_1'),
             Filter::multiselect('roles.id')->options($this->roles),
+            Filter::text('roles.name'),
             Filter::boolean('profile.newsletter')->labels('Yes', 'No'),
             Filter::timepicker('profile.profile_time'),
             Filter::datepicker('profile.profile_date'),
-            Filter::datetimepicker('created_at'),
+            Filter::datetimepicker('profile.created_at'),
             //Filter::datetimepicker('updated_at'),
         ];
     }
