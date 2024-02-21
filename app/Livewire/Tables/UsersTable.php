@@ -33,7 +33,6 @@ class UsersTable extends Component
 
     protected function setup(): void
     {
-        $this->addInlineAction('Update', 'users.update', ['user' => 'id']);
     }
 
     public function columns(): array
@@ -111,6 +110,10 @@ class UsersTable extends Component
                 ->sortable()
                 ->exportable()
                 ->visible(false),
+
+            Column::add('', 'Actions')->callback(function (Model $model) {
+                return view('livewire.tables.users-actions', ['model' => $model]);
+            })->actionable()
         ];
     }
 

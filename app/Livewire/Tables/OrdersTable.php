@@ -32,8 +32,6 @@ class OrdersTable extends Component
 
     protected function setup(): void
     {
-        $this->addInlineAction(__('Process'), 'orders.update', ['order' => 'id']);
-        $this->addInlineAction(__('Update'), 'orders.update', ['order' => 'id']);
     }
 
     public function builder(): Builder
