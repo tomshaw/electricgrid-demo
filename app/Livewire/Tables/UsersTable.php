@@ -91,13 +91,15 @@ class UsersTable extends Component
                 ->callback(fn (Model $model) => Carbon::parse($model->profile->profile_time)->format('g:i a'))
                 ->searchable()
                 ->sortable()
-                ->exportable(),
+                ->exportable()
+                ->visible(false),
 
             Column::add('profile.profile_date', __('Profile Date'))
                 ->callback(fn (Model $model) => Carbon::parse($model->profile->profile_date)->format('m-d-Y'))
                 ->searchable()
                 ->sortable()
-                ->exportable(),
+                ->exportable()
+                ->visible(false),
 
             Column::add('profile.created_at', 'Created At')
                 ->callback(fn (Model $model) => Carbon::parse($model->profile->created_at)->format('F j, Y, g:i a'))
