@@ -6,7 +6,7 @@ This repository serves as a demonstration of [Electric Grid](https://github.com/
 
 Before running the seeder make sure to update your `.env` file with the following settings. 
 
-> Note: Refer to the `UserTableSeeder` to understand how these values are used.
+> Refer to the `UserTableSeeder` to understand how these values are used.
 
 ```env
 DB_SEED_NAME="Full Stack Developer"
