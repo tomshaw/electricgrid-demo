@@ -15,10 +15,7 @@ use Livewire\Volt\Volt;
 */
 
 Volt::route('/', 'home.table')->name('home');
-
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Volt::route('/dashboard', 'home.table')->name('dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
