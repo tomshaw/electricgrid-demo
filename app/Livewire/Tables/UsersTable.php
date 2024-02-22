@@ -26,9 +26,11 @@ class UsersTable extends Component
 
     public array $letterSearchColumns = ['name'];
 
+    public array $computedColumns = ['posts_count'];
+
     public function builder(): Builder
     {
-        return User::with(['roles', 'profile']);
+        return User::with(['roles', 'profile'])->withCount('posts');
     }
 
     protected function setup(): void
@@ -86,6 +88,11 @@ class UsersTable extends Component
                 ->sortable()
                 ->exportable(),
 
+            Column::add('posts_count', 'Posts')
+                ->searchable()
+                ->sortable()
+                ->exportable(),
+
             Column::add('profile.profile_time', __('Profile Time'))
                 ->callback(fn (Model $model) => Carbon::parse($model->profile->profile_time)->format('g:i a'))
                 ->searchable()
@@ -126,6 +133,7 @@ class UsersTable extends Component
             Filter::multiselect('roles.id')->options($this->roles),
             Filter::text('roles.name'),
             Filter::boolean('profile.newsletter')->labels('Yes', 'No'),
+            Filter::number('posts_count'),
             Filter::timepicker('profile.profile_time'),
             Filter::datepicker('profile.profile_date'),
             Filter::datetimepicker('profile.created_at'),
