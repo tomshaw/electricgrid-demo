@@ -37,17 +37,6 @@ class OrdersTable extends Component
     public function builder(): Builder
     {
         return Order::with('user');
-
-        // return Order::with(['user' => function ($query) {
-        //     $query->select('id', 'name', 'email');
-        // }]);
-
-        // return Order::with(['user' => function ($query) {
-        //     $query->select('id', 'name', 'email');
-        // }])->select('orders.id', 'orders.user_id', 'orders.status', 'orders.total', 'orders.invoiced', 'orders.order_time', 'orders.order_date', 'orders.created_at', 'orders.updated_at');
-
-        // return Order::select('orders.id', 'orders.status', 'orders.total', 'orders.invoiced', 'orders.order_time', 'orders.order_date', 'orders.created_at', 'orders.updated_at', 'users.name')
-        //     ->join('users', 'orders.user_id', '=', 'users.id');
     }
 
     public function columns(): array
@@ -57,7 +46,8 @@ class OrdersTable extends Component
         return [
             Column::add('id', __('ID'))
                 ->sortable()
-                ->exportable(),
+                ->exportable()
+                ->style('w-3'),
 
             Column::add('user.name', __('Customer'))
                 ->searchable()
@@ -104,11 +94,11 @@ class OrdersTable extends Component
     public function filters(): array
     {
         return [
-            Filter::number('id')->placeholders('Min', 'Max'),
-            Filter::text('user.name')->placeholder('Customer'),
+            Filter::number('id'),
+            Filter::text('user.name'),
             Filter::select('status')->options(OrderStatus::toOptions()),
-            Filter::number('total')->placeholders('Min Total', 'Max Total'),
-            Filter::boolean('invoiced')->labels('Yes', 'No'),
+            Filter::number('total'),
+            Filter::boolean('invoiced'),
             Filter::timepicker('order_time'),
             Filter::datepicker('order_date'),
             Filter::datetimepicker('created_at')->addDataAttribute('date-format', 'H:i'),
